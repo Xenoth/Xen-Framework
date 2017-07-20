@@ -2,7 +2,7 @@
 ## Description
 
 Simple Key Value Syntax allows to store easily variables into a file.
-No need to use or to know XML or YAML !
+No need to use or known XML or YAML !
 
 ## How to use
 To write a variable you need to use the next syntax:

@@ -86,8 +86,8 @@ bool SKVManager::setValue(std::string pathfile, std::string key, std::string val
 
     std::string strReplace = key + ":" + getValue(pathfile, key);
     std::string strNew = key + ":" + value;
-    std::ifstream filein(pathfile); //File to read from
-    std::ofstream fileout("tmp.txt"); //Temporary file
+    std::ifstream filein(pathfile);
+    std::ofstream fileout("tmp.txt");
     if(!filein || !fileout)
     {
         std::cerr << "Error opening files!" << std::endl;
@@ -95,7 +95,6 @@ bool SKVManager::setValue(std::string pathfile, std::string key, std::string val
     }
 
     std::string strTemp;
-    //bool found = false;
     while(filein >> strTemp)
     {
         if(strTemp == strReplace){
@@ -108,8 +107,8 @@ bool SKVManager::setValue(std::string pathfile, std::string key, std::string val
     filein.close();
     fileout.close();
 
-    filein.open("tmp.txt"); //File to read from
-    fileout.open(pathfile); //Temporary file
+    filein.open("tmp.txt");
+    fileout.open(pathfile);
     while(filein >> strTemp)
     {
         strTemp += "\n";
@@ -120,7 +119,7 @@ bool SKVManager::setValue(std::string pathfile, std::string key, std::string val
     fileout.close();
 
     if( remove( "tmp.txt" ) != 0 )
-        perror( "Error deleting \"tmp.txt\"" );
+        std::cerr << "Error deleting \"tmp.txt\"" << std::endl;
 
     return true;
 }
