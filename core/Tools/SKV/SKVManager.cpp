@@ -12,7 +12,15 @@ SKVManager &SKVManager::getInstance()
 }
 
 void SKVManager::createSKVFile(std::string pathfile)
-{}
+{
+    std::ofstream newFile(pathfile);
+
+    if(!newFile.is_open())
+        std::cerr << "unable to create new file \"" << pathfile << "\"" << std::endl;
+
+    else
+        newFile.close();
+}
 
 bool SKVManager::keyFound(std::string pathfile, std::string key)
 {
@@ -58,6 +66,64 @@ std::map<std::string, std::string> SKVManager::getAllKeysValues(std::string path
     return allKeysValues;
 }
 
+
+bool SKVManager::insertKeyValue(std::string pathfile, std::string key, std::string value)
+{
+    if(keyFound(pathfile, key))
+    {
+        std::cerr << "Cannot duplicate key \"" << key << "\"" << std::endl;
+        return false;
+    }
+    std::ofstream file(pathfile, std::ios::out | std::ios::app );
+    file << key << ":" << value << std::endl;
+    file.close();
+}
+
+bool SKVManager::setValue(std::string pathfile, std::string key, std::string value)
+{
+    if(!keyFound(pathfile, key))
+        return false;
+
+    std::string strReplace = key + ":" + getValue(pathfile, key);
+    std::string strNew = key + ":" + value;
+    std::ifstream filein(pathfile); //File to read from
+    std::ofstream fileout("tmp.txt"); //Temporary file
+    if(!filein || !fileout)
+    {
+        std::cerr << "Error opening files!" << std::endl;
+        return false;
+    }
+
+    std::string strTemp;
+    //bool found = false;
+    while(filein >> strTemp)
+    {
+        if(strTemp == strReplace){
+            strTemp = strNew;
+        }
+        strTemp += "\n";
+        fileout << strTemp;
+    }
+
+    filein.close();
+    fileout.close();
+
+    filein.open("tmp.txt"); //File to read from
+    fileout.open(pathfile); //Temporary file
+    while(filein >> strTemp)
+    {
+        strTemp += "\n";
+        fileout << strTemp;
+    }
+
+    filein.close();
+    fileout.close();
+
+    if( remove( "tmp.txt" ) != 0 )
+        perror( "Error deleting \"tmp.txt\"" );
+
+    return true;
+}
 
 std::ifstream* SKVManager::openSKVFile(std::string pathfile)
 {

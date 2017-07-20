@@ -7,11 +7,15 @@
 #include "SKVManager.h"
 
 #define TEST_FILE "../test.txt"
+#define NEW_SKV_FILE "../created_skv_file.txt"
 
 void testAllKeysValues(SKVManager &skvManager);
 void testKeyFound(SKVManager &skvManager);
 void testValueFound(SKVManager &skvManager);
 void testGetValue(SKVManager &skvManager);
+
+void testCreatingAndInserting(SKVManager &skvManager);
+void testSetValue(SKVManager &skvManager);
 
 int main(int argc, char** argv)
 {
@@ -22,7 +26,8 @@ int main(int argc, char** argv)
     testValueFound(skvManager);
     testGetValue(skvManager);
 
-
+    testCreatingAndInserting(skvManager);
+    testSetValue(skvManager);
 
     return EXIT_SUCCESS;
 }
@@ -59,4 +64,32 @@ void testGetValue(SKVManager &skvManager)
     std::cout << std::endl << "SKVManager::GetValue()" << std::endl;
     std::cout << "\"hello\" value : " << skvManager.getValue(TEST_FILE, "hello") << std::endl;
     std::cout << "\"foo\" value : " << skvManager.getValue(TEST_FILE, "foo") << std::endl;
+}
+
+void testCreatingAndInserting(SKVManager & skvManager)
+{
+    std::cout << std::endl << "SKVManager::createSKVFile()" << std::endl;
+    skvManager.createSKVFile(NEW_SKV_FILE);
+    std::cout << std::endl << "SKVManager::insertKeyValue()" << std::endl;
+    std::cout << "Inserting key \"1\" value \"hello\"" << std::endl;
+    skvManager.insertKeyValue(NEW_SKV_FILE, "1", "hello");
+    std::cout << "Inserting key \"2\" value \"world!\"" << std::endl;
+    skvManager.insertKeyValue(NEW_SKV_FILE, "2", "world!");
+    std::cout << std::endl << "SKVManager::getAllKeysValues()" << std::endl;
+    std::map<std::string, std::string> allKeysValues = skvManager.getAllKeysValues(NEW_SKV_FILE);
+    for(auto& current : allKeysValues)
+    {
+        std::cout <<  current.first << " : " << current.second << std::endl;
+    }
+}
+
+void testSetValue(SKVManager &skvManager)
+{
+    std::cout << std::endl << "SKVManager::setValue()" << std::endl;
+    std::cout << "\"foo\" value : " << skvManager.getValue(TEST_FILE, "foo") << std::endl;
+    skvManager.setValue(TEST_FILE, "foo", "windows");
+    std::cout << "\"foo\" value : " << skvManager.getValue(TEST_FILE, "foo") << std::endl;
+    skvManager.setValue(TEST_FILE, "foo", "linux");
+    std::cout << "\"foo\" value : " << skvManager.getValue(TEST_FILE, "foo") << std::endl;
+
 }

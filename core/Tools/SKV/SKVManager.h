@@ -32,6 +32,10 @@ class SKVManager
 
         std::map<std::string, std::string> getAllKeysValues(std::string pathfile);
 
+        bool insertKeyValue(std::string pathfile, std::string key, std::string value);
+
+        bool setValue(std::string pathfile, std::string key, std::string value);
+
     private:
 
         SKVManager(){};

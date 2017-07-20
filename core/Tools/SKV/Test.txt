@@ -1,3 +1,4 @@
 foo:linux
 hello:world
-bad_syntax:hello error:world
+bad_syntax:hello
+error:world
