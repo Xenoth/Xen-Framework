@@ -1,4 +1,7 @@
-textures_lod:config/textures.lod
-shaders_lod:config/shaders.lod
-fonts_lod:config/fonts.lod
-sound_buffers_lod:config/soundBuffers.lod
+# This SKV File is used to configure the framework
+
+# LOD Files location used by AssetsLoader
+textures_lod:../config/textures.lod
+shaders_lod:../config/shaders.lod
+fonts_lod:../config/fonts.lod
+sound_buffers_lod:../config/soundBuffers.lod

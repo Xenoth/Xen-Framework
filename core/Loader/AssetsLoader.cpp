@@ -9,6 +9,9 @@
 std::map<std::string, sf::Texture*> AssetsLoader::loadTextures(std::string texturesLodFilePath)
 {
     std::map<std::string, std::string> allKeysValues = skvManager.getAllKeysValues(texturesLodFilePath);
+
+    std::cout << allKeysValues.size() << " textures to load :" << std::endl;
+
     std::map<std::string, sf::Texture*> textures;
 
     for(auto& couple : allKeysValues)

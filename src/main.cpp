@@ -7,8 +7,10 @@
 int main(int argc, char** argv)
 {
     std::cout << "Booting Kernel..." << std::endl;
+
     Kernel kernel;
     kernel.initKernel();
 
+    std::cout << "Kernel Ready." << std::endl;
     return 0;
 }

@@ -48,7 +48,14 @@ std::string SKVManager::getValue(std::string pathfile, std::string key)
 {
     std::map<std::string, std::string> allKeysValues = getAllKeysValues(pathfile);
 
-    return allKeysValues.at(key);
+    if (allKeysValues.find(key) == allKeysValues.end())
+    {
+        std::cerr << "Key \"" << key << "\" not found." << std::endl;
+        return "";
+    }
+
+    else
+        return allKeysValues.at(key);
 }
 
 std::map<std::string, std::string> SKVManager::getAllKeysValues(std::string pathfile)
@@ -142,7 +149,9 @@ std::vector<std::string> SKVManager::getLines(std::ifstream *file)
 
     for( std::string line; getline( *file, line); )
     {
-        lines.push_back(line);
+        if(line.size() > 0)
+            if((line.at(0)!= '#'))
+                lines.push_back(line);
     }
     return lines;
 }

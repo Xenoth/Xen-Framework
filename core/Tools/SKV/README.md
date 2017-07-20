@@ -10,6 +10,13 @@ To write a variable you need to use the next syntax:
 foo:hello_world
 ```
 
+You can also add comments into SKV Files, you can also add extra line break to make it easy to read :
+```text
+#This line is a comment
+foo:hello_world
+
+```
+
 SKV will see that the key **foo** have the value **hello_world**.
 
 ### Warning 
