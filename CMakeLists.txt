@@ -25,7 +25,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 set(EXECUTABLE_NAME "XenFramework")
 file (GLOB_RECURSE sourceFiles src/*)
 file (GLOB_RECURSE coreFiles core/*)
-add_executable(${EXECUTABLE_NAME} ${sourceFiles} ${coreFiles} src/main.cpp core/Handler/HandlerInterface.h core/Loader/LoaderInterface.h core/Loader/AssetsLoader.cpp core/Loader/AssetsLoader.h core/Tools/SKV/SKVManager.cpp core/Tools/SKV/SKVManager.h core/Tools/SKV/main.cpp)
+add_executable(${EXECUTABLE_NAME} src/main.cpp core/kernel.h core/kernel.cpp core/Loader/AbstractLoader.h core/Loader/AssetsLoader.cpp core/Loader/AssetsLoader.h Core/Tools/SKV/SKVManager.h Core/Tools/SKV/SKVManager.cpp)
 
 
 # Detect and add SFML

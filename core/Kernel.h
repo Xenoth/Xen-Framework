@@ -5,20 +5,30 @@
 #ifndef XENFRAMEWORK_KERNEL_H
 #define XENFRAMEWORK_KERNEL_H
 
-#include "Handler/TexturesHandler.h"
+#include "Loader/AssetsLoader.h"
 
 class Kernel
 {
     public :
 
-        const std::string CONFIG_PATH= "../config/";
-        const std::string TEXTURES_LOD = "textures.lod";
+        const std::string CONFIG_PATH= "../config/config.skv";
 
-        Kernel();
+        inline Kernel() {};
 
-        TexturesHandler texturesHandler;
+        void initKernel();
 
+        //AssetsHandler assetsHandler;
 
+    private:
+        void readConfigFile();
+        void initHandlers();
+
+        std::string textures_lod;
+        std::string shaders_lod;
+        std::string fonts_lod;
+        std::string soundBuffers_lod;
+
+        SKVManager &skvManager = SKVManager::getInstance();
 };
 
 

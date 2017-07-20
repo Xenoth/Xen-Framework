@@ -1,13 +1,14 @@
 //
-// Created by Xenoth on 16/07/2017.
+// Created by Xenoth on 20/07/2017.
 //
 
+#include "../core/Kernel.h"
 
-#include <cstring>
-
-using namespace std;
-
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
+    std::cout << "Booting Kernel..." << std::endl;
+    Kernel kernel;
+    kernel.initKernel();
 
+    return 0;
 }

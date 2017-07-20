@@ -1,0 +1,4 @@
+textures_lod:config/textures.lod
+shaders_lod:config/shaders.lod
+fonts_lod:config/fonts.lod
+sound_buffers_lod:config/soundBuffers.lod
