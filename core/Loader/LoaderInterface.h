@@ -8,7 +8,7 @@
 #include <string>
 #include <map>
 
-class HandlerInterface
+class LoaderInterface
 {
     public:
 
@@ -19,7 +19,7 @@ class HandlerInterface
          */
         virtual bool isValidFilename(std::string filename) = 0;
 
-        /** Specify here which resource are valid
+        /** Specify here which resources are valid
          *
          * @param resource
          * @return bool
