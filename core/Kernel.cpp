@@ -29,6 +29,8 @@ void Kernel::initHandlers()
 
     AssetsLoader assetsLoader;
 
-    std::cout << "Loading Textures..." << std::endl;
     std::map<std::string, sf::Texture*> textures = assetsLoader.loadTextures(textures_lod);
+    std::map<std::string, sf::Font*> fonts = assetsLoader.loadFonts(fonts_lod);
+    std::map<std::string, sf::Shader*> shaders = assetsLoader.loadShaders(shaders_lod);
+    std::map<std::string, sf::SoundBuffer*> soundBuffers = assetsLoader.loadSoundBuffers(soundBuffers_lod);
 }

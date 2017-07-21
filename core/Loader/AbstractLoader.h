@@ -11,6 +11,7 @@
 class AbstractLoader {
 
     public:
+
         inline AbstractLoader() {};
         virtual ~AbstractLoader() = 0;
 

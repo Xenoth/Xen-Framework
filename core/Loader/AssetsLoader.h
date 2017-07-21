@@ -16,10 +16,11 @@
 class AssetsLoader : public AbstractLoader
 {
     public:
+
         std::map<std::string,sf::Texture*> loadTextures(std::string texturesLodFilePath);
         std::map<std::string,sf::Font*> loadFonts(std::string fontsLodFilePath);
         std::map<std::string,sf::Shader*> loadShaders(std::string shadersLodFilePath);
-        std::map<std::string,sf::SoundBuffer*> loadSoundBuffers(std::string soudBufferLodFilePath);
+        std::map<std::string,sf::SoundBuffer*> loadSoundBuffers(std::string soundBufferLodFilePath);
 
 };
 

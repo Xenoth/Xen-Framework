@@ -1,1 +1,4 @@
+# Testing textures
+
 planet:../Resources/Textures/planet.png
+grass:../Resources/Textures/grass.jpg
